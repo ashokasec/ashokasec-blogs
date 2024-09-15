@@ -1,0 +1,4 @@
+user-agent: *
+Allow: /
+Disallow: /sample-blog-for-article-ui
+Sitemap: https://acme.com/sitemap.xml

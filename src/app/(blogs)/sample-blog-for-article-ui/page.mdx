@@ -1,0 +1,70 @@
+import AshImage from "@/components/md-components/ash-image";
+import AshLink from "@/components/md-components/ash-link";
+
+export const metadata = {
+  title: "Why JWE Outperforms JWT in Client-Side Security?",
+};
+
+<AshImage
+  src="https://res.cloudinary.com/dxic5gitr/image/upload/v1726402086/jwt_azzke2.png"
+  type="cover"
+  width={1000}
+  height={500}
+  coverCreditTitle="PNG Wing"
+  coverCreditLink="https://www.pngwing.com"
+  alt="Preview Image"
+/>
+
+# Why JWE Outperforms JWT in Client-Side Security?
+
+Here's something better than **JWT** that most Devs are unaware of and risking their user's confidential data on client-side.
+
+## Introduction to JOSE
+
+There's an NPM package called <AshLink href="https://www.npmjs.com/package/jose" target="_blank">JOSE</AshLink> (JSON Object Signing and Encryption) that handle JWT and more, including
+
+- JSON Web Token (**JWT**)
+- JSON Web Signatures (**JWS**),
+- JSON Web Encryption (**JWE**),
+- JSON Web Key Set (**JWKS**)
+
+and more...
+
+IRL, you'll be mostly working with **JWTs** and **JWEs** and am also talking about these 2 here.
+
+If you're familiar with **JWT**, you know this sends a token to client side, since it's only **encoded** with a secret key or signature, the data isn't protected and can still be easily read without an encryption key.
+
+### Example
+
+If you use **JWT**, this data will give...
+
+```json
+{
+  "patientId": "12345",
+  "name": "ashokasec",
+  "medicalRecord": "ConfidentialData123"
+}
+```
+
+output like this...
+
+```plaintext
+eyJhbGciOiJIUzI1NiJ9.eyJwYXRpZW50SWQiOiIxMjM0NSIsIm5hbWUiOiJhc2hva2FzZWMiLCJtZWRpY2FsUmVjb3JkIjoiQ29uZmlkZW50aWFsRGF0YTEyMyJ9._qEpfAB2p5l8NjJ20Ys_-D2wrdQvzWDJqd-X0Qezj_Q
+```
+
+Even though the token is encoded with a secret key, the encoded information is still visible to the client side, which is why it is advised not to include any secrets or confidential data on the client side.
+
+In contrast, if you use JWE, it will give you something similar to a JWT token but with 5 parts (the header - the encrypted key - the initialization vector (IV) - the ciphertext - the auth tag).
+
+The JWE token is encrypted, so it cannot be decrypted without the encryption key.
+
+## High Level Conclusion
+
+JWE is used where the transmission of data should be very confidential. The ideal situation for using JWE is, for example, in a healthcare app where you need to send sensitive patient.
+
+## When to use JWE?
+
+JWE is used where the transmission of data should be very confidential. The ideal situation for using JWE is, for example, in a healthcare app where you need to send sensitive patient.
+
+- Using JWT alone can be risky because if the token is intercepted, the sensitive information could be exposed, as JWTs are only encoded and not encrypted.
+- To keep the data secure, JWE is a better choice. JWE encrypts the token, so even if intercepted, the sensitive data remains protected and confidential. This makes JWE the ideal option for securely transmitting sensitive information.
