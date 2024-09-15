@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { inter } from "@/lib/fonts";
+import Provider from "@/components/customs/provider";
 
 export const metadata: Metadata = {
   title: "Blogs | @ashokasec",
@@ -13,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body style={inter.style}>{children}</body>
+    <html lang="en" className="light">
+      <body style={inter.style}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
