@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "@/components/customs/navbar";
-import Footer from "@/components/customs/footer";
-import 'highlight.js/styles/atom-one-dark.css'
+import "highlight.js/styles/atom-one-dark.css";
 
 type LayoutProps = {
   readonly children: React.ReactNode;
@@ -21,15 +19,7 @@ export const metadata = {
 };
 
 const layout = ({ children }: LayoutProps) => {
-  return (
-    <>
-      <Navbar />
-      <main className="max-w-3xl mx-auto px-3 md:px-0 overflow-x-hidden">
-        <article className="mt-8 mb-8 md:mb-12">{children}</article>
-      </main>
-      <Footer />
-    </>
-  );
+  return <article className="mt-8 mb-8 md:mb-12">{children}</article>;
 };
 
 export default layout;
