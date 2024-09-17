@@ -4,11 +4,21 @@ import { inter } from "@/lib/fonts";
 import Provider from "@/components/customs/provider";
 import Navbar from "@/components/customs/navbar";
 import Footer from "@/components/customs/footer";
+import Analytics from "@/components/analytics/analytics";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Blogs | @ashokasec",
-  description: "Explore exclusively crafted posts related to development & security by ashokasec.",
-  keywords: ["development blog", "security blog", "personal blog", "ashokasec", "nextjs", "nextjs blog website"]
+  description:
+    "Explore exclusively crafted posts related to development & security by ashokasec.",
+  keywords: [
+    "development blog",
+    "security blog",
+    "personal blog",
+    "ashokasec",
+    "nextjs",
+    "nextjs blog website",
+  ],
 };
 
 export default function RootLayout({
@@ -18,8 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
+      <head>
+        <Analytics />
+      </head>
       <body style={inter.style}>
         <Provider>
+          <NextTopLoader showSpinner={false} color="#1968ff" />
           <div className="min-h-screen flex flex-col justify-between">
             <div>
               <Navbar />
