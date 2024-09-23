@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Blogs | @ashokasec",
   description:
     "Explore exclusively crafted posts related to development & security by ashokasec.",
+  alternates: {
+    canonical: "https://blog.ashokasec.com",
+  },
   keywords: [
     "development blog",
     "security blog",
